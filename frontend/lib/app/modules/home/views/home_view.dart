@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/app/modules/restaurant/views/restaurant_view.dart';
 
 import 'package:get/get.dart';
 
@@ -12,11 +13,20 @@ class HomeView extends GetView<HomeController> {
         title: Text('HomeView'),
         centerTitle: true,
       ),
-      body: Center(
-        child: Text(
-          'HomeView is working',
-          style: TextStyle(fontSize: 20),
-        ),
+      body: Column(
+        children: [
+          Center(
+            child: Text(
+              'HomeView is working',
+              style: TextStyle(fontSize: 20),
+            ),
+          ),
+          SizedBox(height: 20),
+          ElevatedButton(
+            onPressed: () => Get.to(RestaurantView()),
+            child: Text('Goto Restaurant'),
+          ),
+        ],
       ),
     );
   }

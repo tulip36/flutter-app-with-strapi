@@ -13,9 +13,11 @@ class RestaurantView extends GetView<RestaurantController> {
         centerTitle: true,
       ),
       body: Center(
-        child: Text(
-          'RestaurantView is working',
-          style: TextStyle(fontSize: 20),
+        child: Obx(
+          () => Text(
+            '${controller.count}',
+            style: TextStyle(fontSize: 20),
+          ),
         ),
       ),
     );
