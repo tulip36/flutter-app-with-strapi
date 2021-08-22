@@ -7,6 +7,7 @@ import '../controllers/restaurant_controller.dart';
 class RestaurantView extends GetView<RestaurantController> {
   @override
   Widget build(BuildContext context) {
+    print(controller.restaurant.value.name);
     return Scaffold(
       appBar: AppBar(
         title: Text('RestaurantView'),
@@ -15,7 +16,7 @@ class RestaurantView extends GetView<RestaurantController> {
       body: Center(
         child: Obx(
           () => Text(
-            '${controller.count}',
+            '${controller.restaurant.value.name}',
             style: TextStyle(fontSize: 20),
           ),
         ),

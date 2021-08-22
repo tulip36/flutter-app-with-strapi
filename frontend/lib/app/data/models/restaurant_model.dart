@@ -7,12 +7,12 @@ class Restaurant {
 
   Restaurant({this.id, this.name, this.description, this.address, this.phone});
 
-  Restaurant.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
-    description = json['description'];
-    address = json['address'];
-    phone = json['phone'];
+  Restaurant.fromJson(Map<String, dynamic>? json) {
+    id = json?['id'];
+    name = json?['name'];
+    description = json?['description'];
+    address = json?['address'];
+    phone = json?['phone'];
   }
 
   Map<String, dynamic> toJson() {

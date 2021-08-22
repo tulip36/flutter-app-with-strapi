@@ -23,7 +23,7 @@ class HomeView extends GetView<HomeController> {
           ),
           SizedBox(height: 20),
           ElevatedButton(
-            onPressed: () => Get.to(RestaurantView()),
+            onPressed: () => Get.toNamed('/restaurant'),
             child: Text('Goto Restaurant'),
           ),
         ],

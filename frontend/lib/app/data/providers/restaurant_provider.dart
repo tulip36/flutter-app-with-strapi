@@ -1,25 +1,44 @@
+import 'package:frontend/app/data/services/init_services.dart';
 import 'package:get/get.dart';
+import 'package:graphql/client.dart';
 
 import '../models/restaurant_model.dart';
 
-// class RestaurantProvider extends GetConnect {
-//   @override
-//   void onInit() {
-//     httpClient.defaultDecoder = (map) {
-//       if (map is Map<String, dynamic>) return Restaurant.fromJson(map);
-//       if (map is List)
-//         return map.map((item) => Restaurant.fromJson(item)).toList();
-//     };
-//     httpClient.baseUrl = 'YOUR-API-URL';
-//   }
+class RestaurantProvider {
+  GraphQLClient? client;
+  Restaurant? restaurant;
 
-//   Future<Restaurant?> getRestaurant(int id) async {
-//     final response = await get('restaurant/$id');
-//     return response.body;
-//   }
+  Future<Restaurant> getRestaurant(int id) async {
+    client = Get.find<DbService>().client;
+    const String readRepositories = r"""
+      query getRestaurant($id: ID!) {
+        restaurant(id: $id) {
+          id
+          name
+          description
+          address
+          phone
+        }
+      }
+     """;
+    const int id = 1;
 
-//   Future<Response<Restaurant>> postRestaurant(Restaurant restaurant) async =>
-//       await post('restaurant', restaurant);
-//   Future<Response> deleteRestaurant(int id) async =>
-//       await delete('restaurant/$id');
-// }
+    final QueryOptions options = QueryOptions(
+      document: gql(readRepositories),
+      variables: <String, dynamic>{
+        'id': id,
+      },
+    );
+
+    final QueryResult? result = await client?.query(options);
+
+    if (result!.hasException) {
+      print(result.exception.toString());
+    }
+    ;
+
+    Map<String, dynamic> json = result.data?['restaurant'];
+
+    return Restaurant.fromJson(json);
+  }
+}

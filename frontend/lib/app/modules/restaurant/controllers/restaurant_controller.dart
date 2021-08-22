@@ -1,33 +1,23 @@
+import 'package:frontend/app/data/models/restaurant_model.dart';
+import 'package:frontend/app/data/providers/restaurant_provider.dart';
 import 'package:get/get.dart';
 
 class RestaurantController extends GetxController {
-  //TODO: Implement RestaurantController
-
-  GraphQLResponse<dynamic>? response;
+  Restaurant? _restaurant;
+  var restaurant = Restaurant().obs;
   final count = 10.obs;
 
   @override
   void onInit() async {
     super.onInit();
-    // query allow made GraphQL raw querys
-    final connect = GetConnect();
-    connect.baseUrl = 'https://countries.trevorblades.com/';
-    final response = await connect.query(
-      r"""
-   {
-    country(code: "BR") {
-      name
-      native
-      currency
-      languages {
-        code
-        name
-      }
-    }
-  }
-  """,
-    );
-    print(response.body);
+    _restaurant = await RestaurantProvider().getRestaurant(1);
+    restaurant.update((val) {
+      val?.id = _restaurant?.id;
+      val?.name = _restaurant?.name;
+      val?.description = _restaurant?.description;
+      val?.address = _restaurant?.address;
+      val?.phone = _restaurant?.phone;
+    });
   }
 
   @override
