@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -7,7 +9,9 @@ import '../controllers/restaurant_controller.dart';
 class RestaurantView extends GetView<RestaurantController> {
   @override
   Widget build(BuildContext context) {
-    print(controller.restaurant.value.name);
+    if (controller.restaurant.value.name == null) {
+      debugger();
+    }
     return Scaffold(
       appBar: AppBar(
         title: Text('RestaurantView'),

@@ -21,7 +21,7 @@ class RestaurantProvider {
         }
       }
      """;
-    const int id = 1;
+    // const int id = 1;
 
     final QueryOptions options = QueryOptions(
       document: gql(readRepositories),
