@@ -14,12 +14,13 @@ class RestaurantView extends GetView<RestaurantController> {
         centerTitle: true,
       ),
       body: Center(
-        child: Obx(
-          () => Text(
-            '${controller.restaurant.value.name}',
-            style: TextStyle(fontSize: 20),
-          ),
-        ),
+        child: controller.obx(
+            (state) => Text(
+                  '${state.name}',
+                  style: TextStyle(fontSize: 20),
+                ),
+            onEmpty: Text('No date'),
+            onError: (error) => Text(error.toString())),
       ),
     );
   }

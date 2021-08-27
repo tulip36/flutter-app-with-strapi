@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:frontend/app/modules/restaurant/views/restaurant_view.dart';
+// import 'package:frontend/app/modules/restaurant/views/restaurant_view.dart';
 
 import 'package:get/get.dart';
 
@@ -23,7 +23,9 @@ class HomeView extends GetView<HomeController> {
           ),
           SizedBox(height: 20),
           ElevatedButton(
-            onPressed: () => Get.toNamed('/restaurant'),
+            onPressed: () {
+              Get.toNamed('/restaurant');
+            },
             child: Text('Goto Restaurant'),
           ),
         ],

@@ -20,7 +20,7 @@ class DbService extends GetxService {
         'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjI5NjU0MTI0LCJleHAiOjE2MzIyNDYxMjR9.Z1QIJCXShPuhe4sZIVQ1llhp9UvNj2luKN5QIIvSfqQ';
 
     final _httpLink = HttpLink(
-      'http://192.168.31.205:1337/graphql',
+      'http://192.168.31.34:1337/graphql',
     );
 
     final _authLink = AuthLink(

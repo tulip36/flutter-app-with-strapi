@@ -2,7 +2,7 @@ import 'package:frontend/app/data/models/restaurant_model.dart';
 import 'package:frontend/app/data/providers/restaurant_provider.dart';
 import 'package:get/get.dart';
 
-class RestaurantController extends GetxController {
+class RestaurantController extends GetxController with StateMixin {
   Restaurant? _restaurant;
   var restaurant = Restaurant().obs;
   final count = 10.obs;
@@ -10,7 +10,8 @@ class RestaurantController extends GetxController {
   @override
   void onInit() async {
     super.onInit();
-    _restaurant = await RestaurantProvider().getRestaurant(1);
+    _restaurant = await RestaurantProvider().getRestaurant(2);
+
     restaurant.update((val) {
       val?.id = _restaurant?.id;
       val?.name = _restaurant?.name;
