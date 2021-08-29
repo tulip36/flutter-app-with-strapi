@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-// import 'package:frontend/app/modules/restaurant/views/restaurant_view.dart';
-
 import 'package:get/get.dart';
+import 'package:getwidget/getwidget.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../controllers/home_controller.dart';
 
@@ -22,11 +22,20 @@ class HomeView extends GetView<HomeController> {
             ),
           ),
           SizedBox(height: 20),
-          ElevatedButton(
-            onPressed: () {
-              Get.toNamed('/restaurant');
-            },
-            child: Text('Goto Restaurant'),
+          GFButton(
+            onPressed: () => Get.toNamed('/demo'),
+            text: 'demo',
+            size: GFSize.LARGE,
+            type: GFButtonType.outline2x,
+            shape: GFButtonShape.pills,
+            hoverColor: Colors.amber,
+            borderSide: BorderSide.none,
+            textColor: Colors.green,
+            icon: FaIcon(FontAwesomeIcons.angleDoubleDown),
+            // focusColor: Colors.amber,
+            // highlightColor: Colors.amber,
+            // splashColor: Colors.amber,
+            // disabledColor: Colors.amber,
           ),
         ],
       ),
